@@ -38,4 +38,10 @@ In order to generate the dark.json and sun.json files it is easiest to create tw
 
 ## Contributing
 
-Any contribution is welcome. Please help add more modules. 🙏
+Any contribution is welcome 🙏
+
+Ideas for contribution:
+- A module for a tool that you use that supports dark/light mode
+- Better documentation
+- Improve code quality
+- Make it easier to add new modules
