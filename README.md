@@ -18,12 +18,12 @@ The following is a sample configuration:
 
 ```yaml
 modules:
+  macos:
+    enabled: true
   iterm2:
     enabled: true
     dark: ~/.config/iterm2/dark.json
     sun: ~/.config/iterm2/sun.json
-  macos:
-    enabled: true
 ```
 
 ## Modules
