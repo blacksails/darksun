@@ -8,13 +8,24 @@ dark/light mode across all your applications in one go.
 
 Darksun looks for a config file in the following places:
 
-``` /etc/darksun/config.yaml $HOME/.config/darksun/config.yaml
-$HOME/.darksun/config.yaml ./config.yaml ```
+```
+/etc/darksun/config.yaml
+$HOME/.config/darksun/config.yaml
+$HOME/.darksun/config.yaml 
+./config.yaml
+```
 
 The following is a sample configuration:
 
-```yaml modules: macos: enabled: true iterm2: enabled: true dark:
-~/.config/iterm2/dark.json sun: ~/.config/iterm2/sun.json ```
+```yaml
+modules:
+  macos:
+    enabled: true
+  iterm2:
+    enabled: true
+    dark: ~/.config/iterm2/dark.json
+    sun: ~/.config/iterm2/sun.json
+```
 
 ## Modules
 
