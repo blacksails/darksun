@@ -9,7 +9,8 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use: "darksun",
+	Use:   "darksun",
+	Short: "🌓 switch your applications between dark and sun mode",
 	/*
 		Run: func(cmd *cobra.Command, args []string) {
 			m := &iterm.Module{}
@@ -19,7 +20,8 @@ var rootCmd = &cobra.Command{
 }
 
 var darkCmd = &cobra.Command{
-	Use: "dark",
+	Use:   "dark",
+	Short: "🌑 switch all configured modules to dark mode",
 	Run: func(cmd *cobra.Command, args []string) {
 		mods, err := GetModules()
 		if err != nil {
@@ -31,7 +33,8 @@ var darkCmd = &cobra.Command{
 }
 
 var lightCmd = &cobra.Command{
-	Use: "sun",
+	Use:   "sun",
+	Short: "🌕 switch all configured modules to sun mode",
 	Run: func(cmd *cobra.Command, args []string) {
 		mods, err := GetModules()
 		if err != nil {
