@@ -4,6 +4,14 @@ Developers work in diverse environments – Sometimes it's in a dark basement
 other times at a sunny office. Darksun is a program which lets you toggle
 dark/light mode across all your applications in one go.
 
+## Installation
+
+Currently the only way of installing this is with the go tool chain:
+
+```
+go get -u github.com/blacksails/darksun/cmd/darksun
+```
+
 ## Configuration
 
 Darksun looks for a config file in the following places:
