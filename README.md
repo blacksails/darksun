@@ -68,6 +68,7 @@ each of the profiles to each of the files.
 Any contribution is welcome 🙏
 
 Ideas for contribution:
+- option for creating a launchd/cron schedule
 - vim module (might require a vim plugin)
 - tmux module
 - intellij module (might require an intellij plugin)
