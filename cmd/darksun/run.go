@@ -17,7 +17,7 @@ func runModules(modules []darksun.Module, dark bool) {
 			if dark {
 				err = module.Dark()
 			} else {
-				err = module.Light()
+				err = module.Sun()
 			}
 			if err != nil {
 				fmt.Println(err)

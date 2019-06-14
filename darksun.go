@@ -4,5 +4,5 @@ package darksun
 // can be configured dark or light.
 type Module interface {
 	Dark() error
-	Light() error
+	Sun() error
 }
