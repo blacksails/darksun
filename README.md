@@ -33,9 +33,20 @@ modules:
     enabled: true
     dark: ~/.config/iterm2/dark.json
     sun: ~/.config/iterm2/sun.json
+  vscode:
+    enabled: true
 ```
 
-## Modules
+| Key | Default | Required when enabled | Description |
+| === | ======= | ===================== | =========== |
+| modules.macos.enabled | false | - | Enables macos module |
+| modules.iterm2.enabled | false | - | Enables iterm2 module |
+| modules.iterm2.dark | - | true | Path to iterm2 dark profile |
+| modules.iterm2.sun | - | true | Path to iterm2 sun profile |
+| modules.iterm2.guid | - | false | GUID used for iterm2 Darksun profile |
+| modules.vscode.enabled | false | - | Enables vscode module |
+| modules.vscode.dark | "Default Dark+" | false | Name of dark vscode workbench color theme |
+| modules.vscode.dark | "Default Sun+" | false | Name of sun vscode workbench color theme |
 
 All modules are off by default and you will need to create the config file and
 set the enabled field on the modules that you want. The following sections
