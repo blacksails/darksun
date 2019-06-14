@@ -68,6 +68,9 @@ each of the profiles to each of the files.
 Any contribution is welcome 🙏
 
 Ideas for contribution:
+- vim module (might require a vim plugin)
+- tmux module
+- intellij module (might require an intellij plugin)
 - A module for a tool that you use that supports dark/light mode
 - Better documentation
 - Improve code quality
