@@ -8,6 +8,7 @@ import (
 )
 
 type config struct {
+	Dark    bool
 	Modules modules
 }
 
