@@ -45,8 +45,8 @@ func (m *Module) Dark() error {
 	return m.updateDynamicProfile(profile)
 }
 
-// Light implements darksun.Module
-func (m *Module) Light() error {
+// Sun implements darksun.Module
+func (m *Module) Sun() error {
 	profile, err := m.readProfile(false)
 	if err != nil {
 		return err

@@ -36,8 +36,8 @@ func (m *Module) Dark() error {
 	return cmd.Run()
 }
 
-// Light implements darksun.Module
-func (m *Module) Light() error {
+// Sun implements darksun.Module
+func (m *Module) Sun() error {
 	if !isDark() {
 		return nil
 	}
