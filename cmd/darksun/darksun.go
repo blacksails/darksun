@@ -23,26 +23,46 @@ var darkCmd = &cobra.Command{
 	Use:   "dark",
 	Short: "🌑 switch all configured modules to dark mode",
 	Run: func(cmd *cobra.Command, args []string) {
-		mods, err := GetModules()
-		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
-		runModules(mods, true)
+		getAndRunModules(true)
 	},
 }
 
 var lightCmd = &cobra.Command{
-	Use:   "sun",
-	Short: "🌕 switch all configured modules to sun mode",
+	Use:     "sun",
+	Short:   "🌕 switch all configured modules to sun mode",
+	Aliases: []string{"light"},
 	Run: func(cmd *cobra.Command, args []string) {
-		mods, err := GetModules()
-		if err != nil {
+		getAndRunModules(false)
+	},
+}
+
+var toggleCmd = &cobra.Command{
+	Use:     "toggle",
+	Short:   "🌓 toggle your applications between dark and sun mode",
+	Aliases: []string{"light"},
+	Run: func(cmd *cobra.Command, args []string) {
+		dark := cfg.GetBool("dark")
+		if dark {
+			getAndRunModules(false)
+			cfg.Set("dark", false)
+		} else {
+			getAndRunModules(true)
+			cfg.Set("dark", true)
+		}
+		if err := cfg.WriteConfig(); err != nil {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-		runModules(mods, false)
 	},
+}
+
+func getAndRunModules(dark bool) {
+	mods, err := GetModules()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	runModules(mods, dark)
 }
 
 func init() {
@@ -65,6 +85,6 @@ func initConfig() {
 }
 
 func main() {
-	rootCmd.AddCommand(darkCmd, lightCmd)
+	rootCmd.AddCommand(darkCmd, lightCmd, toggleCmd)
 	rootCmd.Execute()
 }
