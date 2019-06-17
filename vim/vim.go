@@ -80,23 +80,23 @@ func (m *Module) setConfigFile(dark bool) error {
 	lines := strings.Split(string(cfg), "\n")
 	bgFound := false
 	schemeFound := false
-	for _, line := range lines {
+	for i, line := range lines {
 		if strings.Contains(line, "set background=") {
 			bgFound = true
 			if dark && m.darkBG != "" {
-				line = fmt.Sprintf("set background=%s", m.darkBG)
+				lines[i] = fmt.Sprintf("set background=%s", m.darkBG)
 			}
 			if !dark && m.sunBG != "" {
-				line = fmt.Sprintf("set background=%s", m.sunBG)
+				lines[i] = fmt.Sprintf("set background=%s", m.sunBG)
 			}
 		}
 		if strings.Contains(line, "colorscheme") {
 			schemeFound = true
 			if dark && m.darkScheme != "" {
-				line = fmt.Sprintf("colorscheme %s", m.darkScheme)
+				lines[i] = fmt.Sprintf("colorscheme %s", m.darkScheme)
 			}
 			if !dark && m.sunScheme != "" {
-				line = fmt.Sprintf("colorscheme %s", m.sunScheme)
+				lines[i] = fmt.Sprintf("colorscheme %s", m.sunScheme)
 			}
 		}
 	}
