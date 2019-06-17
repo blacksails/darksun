@@ -35,6 +35,16 @@ modules:
     sun: ~/.config/iterm2/sun.json
   vscode:
     enabled: true
+  vim:
+    enabled: true
+    neovim: true
+    file: ~/.config/nvim/init.vim
+    dark:
+      colorScheme: solarized
+      background: dark
+    sun:
+      colorScheme: solarized
+      background: light
 ```
 
 | Key | Default | Required when enabled | Description |
@@ -47,6 +57,13 @@ modules:
 | modules.vscode.enabled | false | | Enables vscode module |
 | modules.vscode.dark | Default Dark+ | false | Name of dark vscode workbench color theme |
 | modules.vscode.dark | Default Sun+ | false | Name of sun vscode workbench color theme |
+| modules.vim.enabled | false | | Enables vim module |
+| modules.vim.neovim | false | | Use `nvr --serverlist` to find vim instances |
+| modules.vim.file | | true | Path to vim config file. This lets darksun persist it's changes |
+| modules.vim.dark.colorScheme | | false | Name of dark colorscheme |
+| modules.vim.dark.background | | false | Background usually 'dark' on dark schemes |
+| modules.vim.sun.colorScheme | | false | Name of sun colorscheme |
+| modules.vim.sun.background | | false | Background usually 'light' on sun schemes |
 
 All modules are off by default and you will need to create the config file and
 set the enabled field on the modules that you want. The following sections
@@ -63,13 +80,19 @@ two manual profiles in iTerm and configure them to your liking you can then
 click "Other actions..." and select "Copy Profile as JSON". Paste the json for
 each of the profiles to each of the files.
 
+### Vim
+
+Currently only neovim is supported. In order for darksun to communicate with
+current nvim processes we rely on `nvr`. This is easily installed using
+`pip install neovim-remote`
+
 ## Contributing
 
 Any contribution is welcome 🙏
 
 Ideas for contribution:
 - option for creating a launchd/cron schedule
-- vim module (might require a vim plugin)
+- implement vanilla vim support
 - tmux module
 - intellij module (might require an intellij plugin)
 - A module for a tool that you use that supports dark/light mode
