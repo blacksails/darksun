@@ -6,6 +6,7 @@ import (
 	"github.com/blacksails/darksun/macos"
 	"github.com/blacksails/darksun/vim"
 	"github.com/blacksails/darksun/vscode"
+	"github.com/google/uuid"
 )
 
 type config struct {
@@ -35,6 +36,13 @@ func GetModules() ([]darksun.Module, error) {
 		modules = append(modules, macos.New())
 	}
 	if modCfg.ITerm2.Enabled {
+		if modCfg.ITerm2.GUID == "" {
+			guid, err := generateGUID()
+			if err != nil {
+				return nil, err
+			}
+			modCfg.ITerm2.GUID = guid
+		}
 		modules = append(modules, iterm2.New(modCfg.ITerm2))
 	}
 	if modCfg.VSCode.Enabled {
@@ -45,4 +53,17 @@ func GetModules() ([]darksun.Module, error) {
 	}
 
 	return modules, nil
+}
+
+func generateGUID() (string, error) {
+	guid, err := uuid.NewRandom()
+	if err != nil {
+		return "", err
+	}
+	cfg.Set("modules.iterm2.guid", guid.String())
+	err = cfg.WriteConfig()
+	if err != nil {
+		return "", err
+	}
+	return guid.String(), nil
 }

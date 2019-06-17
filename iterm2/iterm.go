@@ -7,9 +7,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/google/uuid"
 	"github.com/mitchellh/go-homedir"
-	"github.com/spf13/viper"
 )
 
 // New returns a new iterm2.Module
@@ -100,22 +98,4 @@ func (m *Module) updateDynamicProfile(profile map[string]interface{}) error {
 		return err
 	}
 	return ioutil.WriteFile(darksunPath, b.Bytes(), 0644)
-}
-
-func getGUID() (string, error) {
-	guid := viper.GetString("iterm2.guid")
-	if guid == "" {
-		guid = newGUID()
-		viper.Set("iterm2.guid", guid)
-		err := viper.WriteConfig()
-		if err != nil {
-			return "", err
-		}
-	}
-	return guid, nil
-}
-
-func newGUID() string {
-	id, _ := uuid.NewRandom()
-	return id.String()
 }

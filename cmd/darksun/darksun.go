@@ -11,12 +11,6 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "darksun",
 	Short: "🌓 switch your applications between dark and sun mode",
-	/*
-		Run: func(cmd *cobra.Command, args []string) {
-			m := &iterm.Module{}
-			err := m.Light()
-			fmt.Println(err)
-		},*/
 }
 
 var darkCmd = &cobra.Command{
@@ -24,6 +18,9 @@ var darkCmd = &cobra.Command{
 	Short: "🌑 switch all configured modules to dark mode",
 	Run: func(cmd *cobra.Command, args []string) {
 		getAndRunModules(true)
+		if err := setCurrentMode(true); err != nil {
+			errExit(err)
+		}
 	},
 }
 
@@ -33,6 +30,9 @@ var lightCmd = &cobra.Command{
 	Aliases: []string{"light"},
 	Run: func(cmd *cobra.Command, args []string) {
 		getAndRunModules(false)
+		if err := setCurrentMode(false); err != nil {
+			errExit(err)
+		}
 	},
 }
 
@@ -42,18 +42,28 @@ var toggleCmd = &cobra.Command{
 	Aliases: []string{"light"},
 	Run: func(cmd *cobra.Command, args []string) {
 		dark := cfg.GetBool("dark")
+		var err error
 		if dark {
 			getAndRunModules(false)
-			cfg.Set("dark", false)
+			err = setCurrentMode(false)
 		} else {
 			getAndRunModules(true)
-			cfg.Set("dark", true)
+			err = setCurrentMode(true)
 		}
-		if err := cfg.WriteConfig(); err != nil {
-			fmt.Println(err)
-			os.Exit(1)
+		if err != nil {
+			errExit(err)
 		}
 	},
+}
+
+func errExit(err error) {
+	fmt.Println(err)
+	os.Exit(1)
+}
+
+func setCurrentMode(dark bool) error {
+	cfg.Set("dark", dark)
+	return cfg.WriteConfig()
 }
 
 func getAndRunModules(dark bool) {
