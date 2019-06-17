@@ -4,6 +4,7 @@ import (
 	"github.com/blacksails/darksun"
 	"github.com/blacksails/darksun/iterm2"
 	"github.com/blacksails/darksun/macos"
+	"github.com/blacksails/darksun/vim"
 	"github.com/blacksails/darksun/vscode"
 )
 
@@ -16,6 +17,7 @@ type modules struct {
 	ITerm2 iterm2.Config
 	MacOS  macos.Config
 	VSCode vscode.Config
+	Vim    vim.Config
 }
 
 // GetModules reads the configuration and returns a list of the enabled
@@ -37,6 +39,9 @@ func GetModules() ([]darksun.Module, error) {
 	}
 	if modCfg.VSCode.Enabled {
 		modules = append(modules, vscode.New(modCfg.VSCode))
+	}
+	if modCfg.Vim.Enabled {
+		modules = append(modules, vim.New(modCfg.Vim))
 	}
 
 	return modules, nil
