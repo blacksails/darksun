@@ -56,7 +56,7 @@ modules:
 | modules.iterm2.guid | | false | GUID used for iterm2 Darksun profile |
 | modules.vscode.enabled | false | | Enables vscode module |
 | modules.vscode.dark | Default Dark+ | false | Name of dark vscode workbench color theme |
-| modules.vscode.dark | Default Sun+ | false | Name of sun vscode workbench color theme |
+| modules.vscode.sun | Default Light+ | false | Name of sun vscode workbench color theme |
 | modules.vim.enabled | false | | Enables vim module |
 | modules.vim.neovim | false | | Use `nvr --serverlist` to find vim instances |
 | modules.vim.file | | true | Path to vim config file. This lets darksun persist it's changes |
