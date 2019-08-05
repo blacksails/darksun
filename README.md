@@ -91,11 +91,9 @@ current nvim processes we rely on `nvr`. This is easily installed using
 Any contribution is welcome 🙏
 
 Ideas for contribution:
-- option for creating a launchd/cron schedule
-- implement vanilla vim support
-- tmux module
-- intellij module (might require an intellij plugin)
+
 - A module for a tool that you use that supports dark/light mode
 - Better documentation
 - Improve code quality
 - Make it easier to add new modules
+- See the [issues](https://github.com/blacksails/darksun/issues)
